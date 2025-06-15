@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WE-MEET PROJECT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 왼쪽: 기존 아바타 페이지 -->
+        <div class="left-panel">
+            <h1 class="page-title">AZ-900 도우미 챗봇</h1>
+
+            <div id="configuration">
+                <input id="region" type="hidden" value="eastus2"></input>
+                <input id="subscriptionKey" type="hidden"></input>
+                <input id="ttsVoice" type="hidden" value="ko-KR-YuJinNeural"></input>
+                <input id="talkingAvatarCharacter" type="hidden" value="lisa"></input>
+                <input id="talkingAvatarStyle" type="hidden" value="casual-sitting"></input>
+                <input id="backgroundColor" type="hidden" value="#FFFFFFFF"></input>
+            </div>
+
+            <div class="avatar-controls">
+                <button id="startSession" onclick="window.startSession()">아바타 부르기</button>
+                <button id="speak" onclick="window.speak()" disabled="disabled">다시 말하기</button>
+                <button id="stopSpeaking" onclick="window.stopSpeaking()" disabled="disabled">끊기</button>
+                <button id="stopSession" onclick="window.stopSession()" disabled="disabled">멈추기</button>
+            </div>
+
+            <div class="avatar-video-area">
+                <h2 id="videoLabel">아바타</h2>
+                <div id="videoContainer">
+                    <div id="remoteVideo"></div>
+                    <canvas id="canvas" width="1920" height="1080" style="background-color: transparent;"
+                        hidden="hidden"></canvas>
+                    <canvas id="tmpCanvas" width="1920" height="1080" hidden="hidden"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 오른쪽: 채팅 섹션 -->
+        <div class="right-panel">
+            <h2>채팅</h2>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- 메시지들이 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <textarea id="messageInput" placeholder="메시지를 입력하세요..." rows="1"></textarea>
+                <button id="recordButton" class="record-button icon-button">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor"
+                            d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-1.7z" />
+                    </svg>
+                </button>
+                <button id="sendButton" class="send-button icon-button">
+                    <svg viewBox="-1 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

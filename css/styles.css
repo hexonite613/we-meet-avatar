@@ -1,0 +1,336 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* 페이지 제목 스타일 */
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 25px 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 왼쪽 패널 */
+.left-panel {
+    flex: 1;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 오른쪽 패널 */
+.right-panel {
+    flex: 1;
+    padding: 0;
+    background-color: #fcfcfc;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #e0e0e0;
+}
+
+.right-panel h2 {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px;
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
+    color: #333;
+    background-color: #fff;
+}
+
+.chat-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 30px;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+    background: #fcfcfc;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background-color: #cce5ff;
+    border-radius: 4px;
+}
+
+.chat-input-container {
+    padding: 15px 20px;
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+#messageInput {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 22px;
+    resize: none;
+    height: 80px;
+    min-height: 80px;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #f5f5f5;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-sizing: border-box;
+    margin-right: 10px;
+}
+
+
+#messageInput:focus {
+    outline: none;
+    border-color: #007bff;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+/* 메시지 스타일 */
+.message {
+    margin-bottom: 0;
+    padding: 12px 18px;
+    border-radius: 18px;
+    max-width: 70%;
+    line-height: 1.4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    margin-left: 0;
+    border-bottom-right-radius: 4px;
+}
+
+.avatar-message {
+    background-color: #e9ecef;
+    color: #212529;
+    align-self: flex-start;
+    margin-right: 0;
+    border-bottom-left-radius: 4px;
+}
+
+/* "답변 작성 중..." 인디케이터 스타일 */
+@keyframes thinking {
+
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+#typing-indicator .thinking-dot {
+    display: inline-block;
+    animation: thinking 1.4s infinite;
+    animation-fill-mode: both;
+}
+
+#typing-indicator .thinking-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+#typing-indicator .thinking-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* 아바타 컨트롤 */
+.avatar-controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 25px;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.avatar-controls button {
+    margin: 0;
+}
+
+/* 아바타 비디오 영역 */
+.avatar-video-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+#videoLabel {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    color: #333;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    align-self: flex-start;
+}
+
+#videoContainer {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    background-color: #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0;
+    box-shadow: none;
+    transition: none;
+}
+
+#videoContainer:hover {
+    box-shadow: none;
+}
+
+#videoContainer #remoteVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 기존 스타일 유지 */
+#logging {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 100px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* 공통 버튼 스타일 */
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #007bff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-shadow: none;
+}
+
+button:hover:not(:disabled) {
+    transform: none;
+    background-color: #e6f2ff;
+    box-shadow: none;
+}
+
+button:active:not(:disabled) {
+    transform: none;
+    background-color: #cce5ff;
+    box-shadow: none;
+}
+
+button:disabled {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 아이콘 버튼(원형) */
+.icon-button {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.icon-button svg {
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+}
+
+/* 전송 버튼 */
+.send-button {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.send-button:hover:not(:disabled) {
+    background-color: #cce5ff;
+}
+
+/* 녹음 버튼 */
+.record-button {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.record-button:hover:not(:disabled) {
+    background-color: #ffe3e6;
+    box-shadow: none;
+}
+
+.record-button.recording {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+.record-button.recording svg {
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
