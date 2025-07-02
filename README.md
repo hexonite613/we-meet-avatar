@@ -5,6 +5,9 @@
 
 📎 [we_meet_결과보고서.pdf](https://github.com/user-attachments/files/21020124/we_meet_.1.pdf)
 
+🔗 관련 저장소:
+- 백엔드 레포: [we-meet-avatar-backend](https://github.com/hexonite613/we-meet-avatar-backend)
+
 ---
 
 ### 목차
